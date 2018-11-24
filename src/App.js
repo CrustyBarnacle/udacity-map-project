@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Container from './components/Container'
 
 class App extends Component {
     render() {
@@ -11,7 +12,7 @@ class App extends Component {
                     <input id="toggle-drawing" type="button" value="Drawing Tools" />
                     </p>
                 </div>
-                <div id="map"></div>
+                <Container />
             </section>
         );
     }
