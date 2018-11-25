@@ -25,6 +25,9 @@ h1 {
   height: 55px;
 }
 
+.hidden {
+    display: none;
+}
 
 #map {
   bottom:0px;
