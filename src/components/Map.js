@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import { Map } from 'google-maps-react';
 
-class Map extends React.Component {
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.google !== this.props.google) {
-      this.loadMap();
+class MyMap extends Component {
+  state = {
+    zoom: 14,
+    center: {
+      lat: 37.774929,
+      lng: -122.419416
     }
-  }
-
-  loadMap() {
-    console.log("Map loading...");
-  }
+  };
 
   render() {
-    return <div ref="map">Loading map...</div>;
+    return (<Map google = {this.props.google} zoom={this.state.zoom}>
+        <div>
+            <h1>Map Loading...</h1>
+        </div>
+    </Map>);
   }
 }
 
-export default Map;
+export default MyMap;
