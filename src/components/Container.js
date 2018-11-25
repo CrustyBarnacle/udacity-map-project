@@ -23,14 +23,17 @@ export class Container extends Component {
     }
     
     return (
-        <Map 
-            google={this.props.google}
-            style={style}
-            initialCenter={alumrock}>
-            
+        <section id="main">
+            <h1>Neighborhood Tour</h1>
+            <Map 
+                google={this.props.google}
+                style={style}
+                initialCenter={alumrock}>
+                
 
-            <Features visible={true} />
-        </Map>
+                <Features visible={true} />
+            </Map>
+        </section>
     );
   }
 }
