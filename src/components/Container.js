@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper} from "google-maps-react";
 
-
+import Tour from './Tour'
 import Features from "./Features";
 
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 export class Container extends Component {
   render() {
-    const alumrock = {lat: 37.371067, lng: -121.821060};   
+    const alumrock = {lat: 37.371067, lng: -121.821060};
+    // const points = map.loadGeoJson('locations.json');
+    // <Tour waypoints='points' />
+;
       
     if (!this.props.loaded) {
       return <div>Loading...</div>;
@@ -23,10 +26,10 @@ export class Container extends Component {
         <Map 
             google={this.props.google}
             style={style}
-            initialCenter={alumrock}
-            >
+            initialCenter={alumrock}>
             
-            <Features visible={true}/>
+
+            <Features visible={true} />
         </Map>
     );
   }
@@ -35,5 +38,5 @@ export class Container extends Component {
 export default GoogleApiWrapper({
   apiKey: __GAPI_KEY__,
   v: "3.30",
-  libraries: ['places']
+  libraries: ['places', '']
 })(Container);
