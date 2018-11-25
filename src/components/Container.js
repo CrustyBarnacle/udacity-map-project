@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { GoogleApiWrapper} from "google-maps-react";
+import { Map, GoogleApiWrapper} from "google-maps-react";
 
-import MyMap from "./Map";
+
 import Features from "./Features";
 
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
@@ -13,20 +13,20 @@ export class Container extends Component {
     }
     
     const style = {
-        width: '100%',
-        height: '100%'
+        width: '100vw',
+        height: 'calc(100vh - 20px)'
     }
     
     return (
-      <div>
-        <h1 id="map-heading">Neighborhood Tour</h1>
-        <Features visible={true}/>
-        <MyMap google={this.props.google} style={style}/>
-      </div>
+        <Map google={this.props.google} style={style}>
+            <Features visible={true}/>
+        </Map>
     );
   }
 }
 
 export default GoogleApiWrapper({
-  apiKey: __GAPI_KEY__
+  apiKey: __GAPI_KEY__,
+  v: "3.30",
+  libraries: ['places']
 })(Container);
