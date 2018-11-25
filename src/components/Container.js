@@ -20,7 +20,7 @@ export class Container extends Component {
     return (
       <div>
         <h1 id="map-heading">Neighborhood Tour</h1>
-        <Features />
+        <Features visible={true}/>
         <MyMap google={this.props.google} style={style}/>
       </div>
     );

@@ -11,7 +11,10 @@ class MyMap extends Component {
   };
 
   render() {
-    return (<Map google = {this.props.google} zoom={this.state.zoom}>
+    return (<Map
+        google = {this.props.google}
+        zoom={this.state.zoom}
+        center={this.state.center}>
         <div>
             <h1>Map Loading...</h1>
         </div>
