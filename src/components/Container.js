@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { GoogleApiWrapper} from "google-maps-react";
 
 import MyMap from "./Map";
+import Features from "./Features";
 
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
@@ -17,15 +18,10 @@ export class Container extends Component {
     }
     
     return (
-      <div style={style}>
-          <div class="options-box">
-              <h1>Cool Features!</h1>
-              <p>
-                  Draw a shape to get the size of the area
-              <input id="toggle-drawing" type="button" value="Drawing Tools" />
-              </p>
-          </div>
-        <MyMap google={this.props.google} />
+      <div>
+        <h1 id="map-heading">Neighborhood Tour</h1>
+        <Features />
+        <MyMap google={this.props.google} style={style}/>
       </div>
     );
   }

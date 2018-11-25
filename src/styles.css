@@ -19,10 +19,13 @@ h1 {
   margin: 0 0 10px 0;
   text-align: center;
 }
-#hide-listings,
-#show-listings {
-  width: 48%;
+
+#map-heading {
+  text-align: center;
+  height: 55px;
 }
+
+
 #map {
   bottom:0px;
   height: 100%;
