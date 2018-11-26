@@ -18,16 +18,18 @@ export class Container extends Component {
     }
     
     const style = {
-        width: '100vw',
-        height: 'calc(100vh - 50px)'
+        left: '340px',
+        width: 'calc(100vw - 340px)',
+        height: 'calc(100vh - 35px)'
     }
+    
     
     return (
         <section id="main">
             <h1>Neighborhood Tour</h1>
             <Features visible={true} />
             <Tour />
-            <Map 
+            <Map className="map" 
                 google={this.props.google}
                 style={style}
                 initialCenter={alumrock}>

@@ -10,7 +10,7 @@ class Features extends Component {
             <div className="options-box" id="menu">
                     Search Neighborhood
                     <h1>Cool Features!</h1>
-                    {this.visible &&
+                    {this.props.visible &&
                         <input id="toggle-drawing" type="text" placeholder="Enter a Location or Address" />
                     }
             </div>
