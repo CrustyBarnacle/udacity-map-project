@@ -19,19 +19,18 @@ export class Container extends Component {
     
     const style = {
         width: '100vw',
-        height: 'calc(100vh - 20px)'
+        height: 'calc(100vh - 50px)'
     }
     
     return (
         <section id="main">
             <h1>Neighborhood Tour</h1>
+            <Features visible={true} />
+            <Tour />
             <Map 
                 google={this.props.google}
                 style={style}
                 initialCenter={alumrock}>
-                
-
-                <Features visible={true} />
             </Map>
         </section>
     );
