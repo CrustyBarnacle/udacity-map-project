@@ -11,7 +11,6 @@ export class Container extends Component {
     const alumrock = {lat: 37.371067, lng: -121.821060};
     // const points = map.loadGeoJson('locations.json');
     // <Tour waypoints='points' />
-;
       
     if (!this.props.loaded) {
       return <div>Loading...</div>;
@@ -25,11 +24,11 @@ export class Container extends Component {
     
     
     return (
-        <section id="main">
+        <section id="container">
             <h1>Neighborhood Tour</h1>
             <Features visible={true} />
             <Tour />
-            <Map className="map" 
+            <Map className="map" role="application" aria-label="map"
                 google={this.props.google}
                 style={style}
                 initialCenter={alumrock}>
