@@ -11,7 +11,7 @@ class Features extends Component {
                     Search Neighborhood
                     <h1>Cool Features!</h1>
                     {this.props.visible &&
-                        <input id="toggle-drawing" type="text" placeholder="Enter a Location or Address" />
+                        <input id="toggle-drawing" type="text" placeholder="Location or Address" />
                     }
             </div>
         );

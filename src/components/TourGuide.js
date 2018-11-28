@@ -19,7 +19,7 @@ class TourGuide extends Component {
 
 // Set the parameters for the renderMap() to use
   initMap = () => {
-    const map = new window.google.maps.Map(document.getElementById('map'), {
+    new window.google.maps.Map(document.getElementById('map'), {
             center: alumrock,  // required parameter
             style: {style},
             zoom: 12           // required parameter
@@ -27,13 +27,13 @@ class TourGuide extends Component {
 	}
 
 render() {
-    	this.renderMap()   // actually draw the map
+    this.renderMap()   // actually draw the map
 	return(
-		<div id="map">       // required page container for the map
+        <div id="map">
 		</div>
-		)
+	)
 
-}
+    }
 }
 
 // =========== insert the <script> code into index.html to allow the javascript to run =========
@@ -47,4 +47,4 @@ function scriptInit(url) {
 }  
 // ============ end <script> tag insertion in index.html for js functionality ===============
 
-export default TourGuide
+export default TourGuide;
