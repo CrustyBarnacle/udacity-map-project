@@ -14,9 +14,9 @@ class TourGuide extends Component {
 
     renderMap = () => {  
         // eslint-disable-next-line no-multi-str
-        scriptInit("https://maps.googleapis.com/maps/api/js?key="+__GAPI_KEY__+"&format=png& \
+        scriptLoad("https://maps.googleapis.com/maps/api/js?key="+__GAPI_KEY__+"&format=png& \
         style=feature:road|color:0xffffff|visibility:simplified&callback=initMap")
-        
+
         window.initMap = this.initMap  // specify where to find initMap for the callback function
         }
 
@@ -36,11 +36,11 @@ class TourGuide extends Component {
             </div>
         )
 
-        }
+    }
 }
 
 // =========== insert the <script> code into index.html to allow the javascript to run =========
-function scriptInit(url) {
+function scriptLoad(url) {
   let index = window.document.getElementsByTagName('script')[0]
   let script = window.document.createElement('script')
   script.src = url
