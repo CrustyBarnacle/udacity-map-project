@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 import "./styles.css";
 
 ReactDOM.render(
-    <Container/>,
+    <Container />,
     document.getElementById("root")
 );
 

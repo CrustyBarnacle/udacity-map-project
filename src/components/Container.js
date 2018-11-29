@@ -7,18 +7,18 @@ export class Container extends Component {
   render() {
     // const points = map.loadGeoJson('locations.json');
     // <Tour waypoints='points' />
-      
+
     // if (!this.props.loaded) {
     //   return <div>Loading...</div>;
     // }
-    
+
     return (
-        <section>
-            <h1 id="map-heading">Neighborhood Tour</h1>
-            <Features visible={true} />
-            <Tour />
-            <TourGuide />
-        </section>
+      <section>
+        <h1 id="map-heading">Neighborhood Tour</h1>
+        <Features visible={true} />
+        <Tour />
+        <TourGuide />
+      </section>
     );
   }
 }
