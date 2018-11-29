@@ -6,11 +6,11 @@ body {
   padding: 0;
 }
 
-.container {
+/* .container {
   width: 100%;
   height: 100%;
   position: relative;
-}
+} */
 
 input {
   font-size: 12px;
@@ -24,8 +24,9 @@ h1 {
 }
 
 #map-heading {
+  background-color: aquamarine;
   text-align: center;
-  height: 35px;
+  height: 30px;
 }
 
 .hidden {
@@ -40,6 +41,7 @@ h1 {
 #map {
   bottom:0px;
   height: 100%;
+  top: 30px;
   left: 340px;
   position: absolute;
   right: 0px;
@@ -49,10 +51,11 @@ h1 {
   background: grey;
   border: 2px solid #999;
   border-radius: 3px;
-  height: 100%;
+  /* height: 100%; */
+  top: -5px;
   line-height: 35px;
-  padding: 5px 5px 15px 5px;
+  /* padding: 5px 5px 15px 5px; */
   text-align: left;
   width: 340px;
-  display: block;
+  /* display: block; */
 }

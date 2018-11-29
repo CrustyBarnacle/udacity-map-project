@@ -13,8 +13,8 @@ export class Container extends Component {
     // }
     
     return (
-        <section id="container">
-            <h1>Neighborhood Tour</h1>
+        <section>
+            <h1 id="map-heading">Neighborhood Tour</h1>
             <Features visible={true} />
             <Tour />
             <TourGuide />
