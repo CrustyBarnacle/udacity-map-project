@@ -9,12 +9,11 @@ class Features extends Component {
     render() {
         return (
             <div className="search-menu" id="search">
-                <h1>Search a Neighborhood</h1>
                 {this.props.visible &&
                     <form id="search" role="search">
-                        <label for="search-input">Location or Address</label>
-                        <input type="search" id="search-input" name="search" spellcheck="false" />
-                        <input value="Submit" type="submit" />
+                        <label for="search-input">Neighborhood Tour: </label>
+                        <input type="search" id="search-input" name="search" spellcheck="false" placeholder="Location or Address"/>
+                        <input value="Search" type="submit" />
                     </form>
                 }
             </div>
