@@ -33,7 +33,7 @@ class TourGuide extends Component {
         let parameters = {
             query: "tacos",
             near: "Alum Rock, CA",
-            limit: "15",
+            limit: "25",
             client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
             client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
             v: "20181128"
@@ -47,7 +47,7 @@ class TourGuide extends Component {
             }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
         })
         .catch(error => {
-            console.log("ERROR! " + error)
+            window.alert("FourSquare API ERROR! " + error)
         })
     }
 
@@ -55,9 +55,11 @@ class TourGuide extends Component {
     initMap = () => {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: alumrock,
-            zoom: 13,
+            zoom: 14,
             style: { style }
         });
+
+        let bounds = new window.google.maps.LatLngBounds();
 
         this.state.venues.map(foursquareVenue => {
 
@@ -66,7 +68,10 @@ class TourGuide extends Component {
                 map: map,
                 title: foursquareVenue.venue.name
               }); 
-        })       
+
+              bounds.extend(marker.position);
+        })
+        map.fitBounds(bounds);           
     }
 
     render() {
