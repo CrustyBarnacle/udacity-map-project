@@ -17,7 +17,7 @@ export class Container extends Component {
         <h1 id="map-heading">Neighborhood Tour</h1>
         <Features visible={true} />
         <Tour />
-        <TourGuide role="application" aria-label="map" />
+        <TourGuide />
       </main>
     );
   }
