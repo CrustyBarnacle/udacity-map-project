@@ -20,12 +20,11 @@ class TourGuide extends Component {
 
     componentDidMount() {
         this.getVenues()
-        this.renderMap()
     }
 
     renderMap = () => {
         scriptLoad("https://maps.googleapis.com/maps/api/js?key=" + __GAPI_KEY__ + "&format=png&style=feature:road|color:0xffffff|visibility:simplified&callback=initMap")
-        window.initMap = this.initMap  // specify where to find initMap for the callback function
+        window.initMap = this.initMap
     }
 
     // FourSquare API call with endpoint and parameters
@@ -34,7 +33,7 @@ class TourGuide extends Component {
         let parameters = {
             query: "tacos",
             near: "Alum Rock, CA",
-            limit: "10",
+            limit: "15",
             client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
             client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
             v: "20181128"
@@ -45,7 +44,7 @@ class TourGuide extends Component {
         .then(response => {
             this.setState({
                 venues: response.data.response.groups[0].items
-            })
+            }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
         })
         .catch(error => {
             console.log("ERROR! " + error)
@@ -56,15 +55,18 @@ class TourGuide extends Component {
     initMap = () => {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: alumrock,
-            zoom: 11,
+            zoom: 13,
             style: { style }
         });
 
-        var marker = new window.google.maps.Marker({
-            position: alumrock,
-            map: map,
-            title: 'Hello World!'
-          });        
+        this.state.venues.map(foursquareVenue => {
+
+            let marker = new window.google.maps.Marker({
+                position: {lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng},
+                map: map,
+                title: foursquareVenue.venue.name
+              }); 
+        })       
     }
 
     render() {
