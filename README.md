@@ -44,9 +44,5 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Resources
-<<<<<<< HEAD
 [FourSquare API Documentation](https://developer.foursquare.com/docs/api)
  - [Venue Recommendations](https://developer.foursquare.com/docs/api/venues/explore)
-=======
-[FourSquare API Documentation](https://developer.foursquare.com/docs/api)
->>>>>>> 3371a160aef697eabc650abfa3c9bcac0b368576
