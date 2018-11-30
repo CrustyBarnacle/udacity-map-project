@@ -16,7 +16,6 @@ export class Container extends Component {
       <main>
         <h1 id="map-heading">Neighborhood Tour</h1>
         <Features visible={true} />
-        <Tour />
         <TourGuide />
       </main>
     );

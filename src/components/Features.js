@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 
 class Features extends Component {
     state = {
-        visible: this.visible
+        visible: this.visible,
+        query: ""
     }
 
     render() {
         return (
-            <div className="options-box" id="menu">
-                Search Neighborhood
-                    <h1>Cool Features!</h1>
+            <div className="search-menu" id="search">
+                <h1>Search a Neighborhood</h1>
                 {this.props.visible &&
-                    <input id="toggle-drawing" type="text" placeholder="Location or Address" />
+                    <form id="search" role="search">
+                        <label for="search-input">Location or Address</label>
+                        <input type="search" id="search-input" name="search" spellcheck="false" />
+                        <input value="Submit" type="submit" />
+                    </form>
                 }
             </div>
         );
