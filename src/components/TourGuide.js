@@ -13,6 +13,11 @@ const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 
 class TourGuide extends Component {
+    state = {
+        venues: [],
+        
+    }
+
     componentDidMount() {
         this.getVenues()
         this.renderMap()
@@ -28,7 +33,8 @@ class TourGuide extends Component {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
         let parameters = {
             query: "tacos",
-            near: "San Jose, CA",
+            near: "Alum Rock, CA",
+            limit: "10",
             client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
             client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
             v: "20181128"
@@ -37,7 +43,9 @@ class TourGuide extends Component {
 
         axios.get(endPoint + new URLSearchParams(parameters))
         .then(response => {
-            console.log(response)
+            this.setState({
+                venues: response.data.response.groups[0].items
+            })
         })
         .catch(error => {
             console.log("ERROR! " + error)
