@@ -44,5 +44,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Resources
-[FourSquare API Documentation](https://developer.foursquare.com/docs/api)
- - [Venue Recommendations](https://developer.foursquare.com/docs/api/venues/explore)
+* [FourSquare API Documentation](https://developer.foursquare.com/docs/api)
+    - [Venue Recommendations](https://developer.foursquare.com/docs/api/venues/explore)
+
+* [Google Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial)
+    - [Map Markers](https://developers.google.com/maps/documentation/javascript/markers)

@@ -59,6 +59,12 @@ class TourGuide extends Component {
             zoom: 11,
             style: { style }
         });
+
+        var marker = new window.google.maps.Marker({
+            position: alumrock,
+            map: map,
+            title: 'Hello World!'
+          });        
     }
 
     render() {
