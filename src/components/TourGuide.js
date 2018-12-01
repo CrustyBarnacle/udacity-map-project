@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Features from "./Features";
 import axios from 'axios';
 
 
@@ -9,13 +10,22 @@ const style = {
 }
 
 const alumrock = { lat: 37.371067, lng: -121.821060 };
-let mapCenter = alumrock;
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 
 class TourGuide extends Component {
     state = {
         venues: [],
+        mapCenter: alumrock,
+
+        venuesParameters: {
+            query: "tacos",
+            near: "Alum Rock, CA",
+            limit: "25",
+            client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
+            client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
+            v: "20181128"
+        }
         
     }
 
@@ -31,15 +41,7 @@ class TourGuide extends Component {
     // FourSquare API call with endpoint and parameters
     getVenues = () => {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
-        let parameters = {
-            query: "tacos",
-            near: "Alum Rock, CA",
-            limit: "25",
-            client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
-            client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
-            v: "20181128"
-            
-        }
+        let parameters = {...this.state.venuesParameters}
 
         axios.get(endPoint + new URLSearchParams(parameters))
         .then(response => {
@@ -57,7 +59,7 @@ class TourGuide extends Component {
 
         // Create Map
         const map = new window.google.maps.Map(document.getElementById('map'), {
-            center: mapCenter,
+            center: this.mapCenter,
             zoom: 14,
             style: { style }
         });
@@ -88,12 +90,13 @@ class TourGuide extends Component {
 
             bounds.extend(marker.position); // Add Marker to bounds (to be extended)
         })
-        map.fitBounds(bounds); // Expand bounds to fit all Markers           
+        map.fitBounds(bounds); // Expand bounds to fit all Markers
     }
 
     render() {
         return (
             <div id="map" role="application" aria-label="map">
+                <Features parameters={this.parameters} />
             </div>
         )
 

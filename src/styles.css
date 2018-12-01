@@ -15,16 +15,18 @@ input {
 }
 
 h1 {
-  color: #525454;
+  color: #a9bbbb;
   font-size: 22px;
   margin: 0 0 10px 0;
   text-align: center;
 }
 
 #map-heading {
-  background-color: aquamarine;
+  padding: 7px;
+  margin: 0;
+  background-color: #296674;
   text-align: center;
-  height: 30px;
+  height: 35px;
 }
 
 .hidden {

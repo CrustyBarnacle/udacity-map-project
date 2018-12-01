@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Features from "./Features";
-import TourGuide from "./TourGuide" // <====== Renamed Map.js to avoid conflict
+import TourGuide from "./TourGuide"
 
 export class Container extends Component {
   render() {
