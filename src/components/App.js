@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TourGuide from "./TourGuide"
 
-export class Container extends Component {
+export class App extends Component {
   render() {
     // const points = map.loadGeoJson('locations.json');
     // <Tour waypoints='points' />
@@ -19,4 +19,4 @@ export class Container extends Component {
   }
 }
 
-export default Container
+export default App

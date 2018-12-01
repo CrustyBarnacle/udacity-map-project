@@ -1,7 +1,6 @@
 html,
 body {
   font-family: Arial, sans-serif;
-  /* height: 100%; */
   margin: 0;
   padding: 0;
 }
@@ -27,14 +26,4 @@ h1 {
   background-color: #296674;
   text-align: center;
   height: 35px;
-}
-
-.hidden {
-    display: none;
-}
-
-.search-menu {
-  height: 35px;
-  width: 35px;
-  display: block;
 }
