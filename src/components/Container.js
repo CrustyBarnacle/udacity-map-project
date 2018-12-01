@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Tour from './Tour'
 import Features from "./Features";
 import TourGuide from "./TourGuide" // <====== Renamed Map.js to avoid conflict
 
@@ -15,7 +14,6 @@ export class Container extends Component {
     return (
       <main>
         <h1 id="map-heading">Neighborhood Tour</h1>
-        <Features visible={true} />
         <TourGuide />
       </main>
     );

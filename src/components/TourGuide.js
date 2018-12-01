@@ -9,6 +9,7 @@ const style = {
 }
 
 const alumrock = { lat: 37.371067, lng: -121.821060 };
+let mapCenter = alumrock;
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 
@@ -56,10 +57,11 @@ class TourGuide extends Component {
 
         // Create Map
         const map = new window.google.maps.Map(document.getElementById('map'), {
-            center: alumrock,
+            center: mapCenter,
             zoom: 14,
             style: { style }
         });
+
         // Set initial map bounds
         let bounds = new window.google.maps.LatLngBounds();
 
