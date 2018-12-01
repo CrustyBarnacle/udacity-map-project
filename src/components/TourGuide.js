@@ -33,6 +33,7 @@ class TourGuide extends Component {
         this.getVenues()
     }
 
+
     renderMap = () => {
         scriptLoad("https://maps.googleapis.com/maps/api/js?key=" + __GAPI_KEY__ + "&format=png&style=feature:road|color:0xffffff|visibility:simplified&callback=initMap")
         window.initMap = this.initMap
@@ -96,7 +97,11 @@ class TourGuide extends Component {
     render() {
         return (
             <div id="map" role="application" aria-label="map">
-                <Features parameters={this.parameters} />
+                <Features
+                venues={this.venues}
+                mapCenter={this.mapCenter}
+                parameters={this.parameters}
+                />
             </div>
         )
 
