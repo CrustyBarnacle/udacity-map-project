@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Features from "./Features";
 import axios from 'axios';
 
 
@@ -97,11 +96,6 @@ class MyMap extends Component {
     render() {
         return (
             <div id="map" role="application" aria-label="map">
-                <Features
-                venues={this.venues}
-                mapCenter={this.mapCenter}
-                parameters={this.parameters}
-                />
             </div>
         )
 
