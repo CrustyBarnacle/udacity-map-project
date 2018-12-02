@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TourGuide from "./TourGuide"
+import MyMap from "./MyMap"
 
 export class App extends Component {
   render() {
@@ -11,9 +11,9 @@ export class App extends Component {
     // }
 
     return (
-      <main>
+      <main role="main">
         <h1 id="map-heading">Neighborhood Tour</h1>
-        <TourGuide />
+        <MyMap />
       </main>
     );
   }

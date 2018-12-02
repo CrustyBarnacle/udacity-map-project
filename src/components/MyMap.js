@@ -13,7 +13,7 @@ const alumrock = { lat: 37.371067, lng: -121.821060 };
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 
-class TourGuide extends Component {
+class MyMap extends Component {
     state = {
         venues: [],
         mapCenter: alumrock,
@@ -119,4 +119,4 @@ function scriptLoad(url) {
 }
 
 
-export default TourGuide;
+export default MyMap;

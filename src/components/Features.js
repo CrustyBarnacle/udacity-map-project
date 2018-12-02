@@ -6,8 +6,8 @@ class Features extends Component {
         query: ""
     }
 
-    componentDidMount() {
-        document.getElementById('search').addEventListener('click', function() {
+    componentDidMount() { // 'click' should be 'keyup'?
+        document.getElementById('search').addEventListener('keyup', function() {
             this.setState({
                near: document.getElementById('search').value
             })
