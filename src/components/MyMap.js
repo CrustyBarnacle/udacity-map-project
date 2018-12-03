@@ -21,12 +21,12 @@ class MyMap extends Component {
             client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
             v: "20181128"
         }
-        
+
     }
 
 
     componentDidMount() {
-        let parameters = {...this.state.venuesParameters}
+        let parameters = { ...this.state.venuesParameters }
         this.getVenues(parameters)
     }
 
@@ -41,15 +41,16 @@ class MyMap extends Component {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
 
         axios.get(endPoint + new URLSearchParams(parameters))
-        .then(response => {
-            this.setState({
-                venues: response.data.response.groups[0].items
-            }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
-        })
-        .catch(error => {
-            window.alert("FourSquare API ERROR! " + error)
-        })
+            .then(response => {
+                this.setState({
+                    venues: response.data.response.groups[0].items
+                }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
+            })
+            .catch(error => {
+                window.alert("FourSquare API ERROR! " + error)
+            })
     }
+
 
     // Set the parameters for the renderMap() to use
     initMap = () => {
@@ -65,25 +66,36 @@ class MyMap extends Component {
         let bounds = new window.google.maps.LatLngBounds();
 
         // Create InfoWindow
-        let infowindow = new window.google.maps.InfoWindow();            
+        let infowindow = new window.google.maps.InfoWindow();
+
+        // Track current marker (for clicking, bouncing)
+        // To_Do ...
 
         // Add Markers (bases on FourSquare response)
         this.state.venues.map(foursquareVenue => {
 
             // Create Marker. Initially drops down in place.
             let marker = new window.google.maps.Marker({
-                position: {lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng},
+                position: { lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng },
                 map: map,
                 title: foursquareVenue.venue.name,
                 animation: window.google.maps.Animation.DROP
-              });
-            
+            });
+
             // Marker clicked
-            marker.addListener('click', function() {
+            marker.addListener('click', function () {
                 infowindow.setContent(foursquareVenue.venue.name)
-            
+
                 // Open InfoWindow
                 infowindow.open(map, marker);
+
+                // Start or stop bouncing marker
+                if (marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                  } else {
+                    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+                  }
+
             });
 
             this.state.markers.push(marker);
@@ -96,10 +108,10 @@ class MyMap extends Component {
         return (
             <div>
                 <Features
-                parameters={this.state.parameters}
-                venues={this.state.venues}
-                markers={this.state.markers}
-                getVenues={this.venues}/>
+                    parameters={this.state.parameters}
+                    venues={this.state.venues}
+                    markers={this.state.markers}
+                    getVenues={this.venues} />
                 <div id="map" role="application" aria-label="map">
                 </div>
             </div>
