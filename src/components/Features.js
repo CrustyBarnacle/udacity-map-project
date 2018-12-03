@@ -16,14 +16,19 @@ class Features extends Component {
 
     render() {
         return (
-            <div className="search-menu" id="search">
-                    <form id="search" role="search">
-                        <label htmlFor="search-input">Neighborhood Tour: </label>
-                        <input type="search" id="search-input" name="search" spellCheck="false" placeholder="Location or Address"
+            <div className="search-menu" id="search-container">
+                    <form id="search" role="search" onSubmit={this.handleSubmit}>
+                        <label htmlFor="search-input">Narrow search:  </label>
+                        <input type="search" id="search-input" name="search" spellCheck="false" placeholder="Name or type of food..."
                         value={this.state.query}
                         onChange={(event) => this.updateQuery(event.target.value)}/>
-                        <input value="Search" type="submit" />
                     </form>
+                    <ul>
+                    {this.props.venues.map(venue => {
+                        return <li key={venue.name}>{venue.name}</li>
+                    })
+                    }
+                    </ul>
             </div>
         );
     }

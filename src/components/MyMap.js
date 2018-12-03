@@ -1,12 +1,7 @@
 import React, { Component } from "react";
+import Features from './Features';
 import axios from 'axios';
 
-
-const style = {
-    left: '340px',
-    width: 'calc(100vw - 340px)',
-    height: 'calc(100vh - 35px)'
-}
 
 const alumrock = { lat: 37.371067, lng: -121.821060 };
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
@@ -28,8 +23,10 @@ class MyMap extends Component {
         
     }
 
+
     componentDidMount() {
-        this.getVenues()
+        let parameters = {...this.state.venuesParameters}
+        this.getVenues(parameters)
     }
 
 
@@ -39,9 +36,8 @@ class MyMap extends Component {
     }
 
     // FourSquare API call with endpoint and parameters
-    getVenues = () => {
+    getVenues = (parameters) => {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
-        let parameters = {...this.state.venuesParameters}
 
         axios.get(endPoint + new URLSearchParams(parameters))
         .then(response => {
@@ -61,7 +57,6 @@ class MyMap extends Component {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: this.mapCenter,
             zoom: 14,
-            style: { style }
         });
 
         // Set initial map bounds
@@ -95,7 +90,13 @@ class MyMap extends Component {
 
     render() {
         return (
-            <div id="map" role="application" aria-label="map">
+            <div>
+                <Features
+                parameters={this.state.parameters}
+                venues={this.state.venues}
+                map={this.map} />
+                <div id="map" role="application" aria-label="map">
+                </div>
             </div>
         )
 
