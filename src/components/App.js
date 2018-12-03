@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Features from "./Features";
 import MyMap from "./MyMap"
 
 export class App extends Component {
