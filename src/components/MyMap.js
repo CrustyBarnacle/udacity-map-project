@@ -58,6 +58,7 @@ class MyMap extends Component {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: this.mapCenter,
             zoom: 14,
+            mapTypeId: 'terrain'
         });
 
         // Set initial map bounds
@@ -69,7 +70,7 @@ class MyMap extends Component {
         // Add Markers (bases on FourSquare response)
         this.state.venues.map(foursquareVenue => {
 
-            // Create Marker
+            // Create Marker. Initially drops down in place.
             let marker = new window.google.maps.Marker({
                 position: {lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng},
                 map: map,
