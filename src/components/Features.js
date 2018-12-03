@@ -13,6 +13,24 @@ class Features extends Component {
         })
     }
 
+    ListItem(props) {
+        return <li>Name: {props.venues}</li>;
+    }
+
+    venueNames(props) {
+        const listItems = this.props.venues.map((venue) =>
+            <this.ListItem
+            key={venue.name}
+            value={venue.name} />
+        );
+
+        return (
+            <ul>
+                {listItems}
+            </ul>
+        );
+    }
+
 
     render() {
         return (
@@ -23,12 +41,7 @@ class Features extends Component {
                         value={this.state.query}
                         onChange={(event) => this.updateQuery(event.target.value)}/>
                     </form>
-                    <ul>
-                    {this.props.venues.map(venue => {
-                        return <li key={venue.name}>{venue.name}</li>
-                    })
-                    }
-                    </ul>
+                    {this.venueNames(this.props.venues)}
             </div>
         );
     }

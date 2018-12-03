@@ -63,14 +63,12 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 * React
-    - [Ari Lerner's - Google Maps React Component How-To](https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/)
-    - [`react-google-maps` package](https://github.com/tomchentw/react-google-maps) Provides a set of React components wrapping underlying Google Maps API instances.
+    - [Ari Lerner's - _Google Maps React Component How-To_](https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/)
+    - [Tania Rascia's - _Getting Started with React_](https://www.taniarascia.com/getting-started-with-react/)
 
 
 * API-related
     - [Foursquare API](https://developer.foursquare.com/)
-    - [Google Maps Street View Service](https://developers.google.com/maps/documentation/javascript/streetview)
-    - [ProgrammableWeb's API Directory](https://www.programmableweb.com/category/all/apis)
     - [MediaWikiAPI for Wikipedia](http://www.mediawiki.org/wiki/API:Main_page)
 // To-Do - Update README
 
