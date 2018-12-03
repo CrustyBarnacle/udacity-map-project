@@ -1,36 +1,33 @@
 import React, { Component } from "react";
-import Features from "./Features";
+import Features from './Features';
 import axios from 'axios';
 
-
-const style = {
-    left: '340px',
-    width: 'calc(100vw - 340px)',
-    height: 'calc(100vh - 35px)'
-}
 
 const alumrock = { lat: 37.371067, lng: -121.821060 };
 const __GAPI_KEY__ = "AIzaSyB1E9XDW32k70wN-VfijTerghnFWLQk0zY";
 
 
-class TourGuide extends Component {
+class MyMap extends Component {
     state = {
         venues: [],
+        markers: [],
         mapCenter: alumrock,
 
         venuesParameters: {
             query: "tacos",
             near: "Alum Rock, CA",
-            limit: "25",
+            limit: "15",
             client_id: "5OG0BWWMUGOYTPHIGWJS3A3YJSY1FB35UTVBFBS3EUZMFYK1",
             client_secret: "2SF04EW1UB4AN3QTYDQVAA54GQSRO1FFRHH1DFN5FVBJA5FK",
             v: "20181128"
         }
-        
+
     }
 
+
     componentDidMount() {
-        this.getVenues()
+        let parameters = { ...this.state.venuesParameters }
+        this.getVenues(parameters)
     }
 
 
@@ -40,20 +37,20 @@ class TourGuide extends Component {
     }
 
     // FourSquare API call with endpoint and parameters
-    getVenues = () => {
+    getVenues = (parameters) => {
         const endPoint = "https://api.foursquare.com/v2/venues/explore?"
-        let parameters = {...this.state.venuesParameters}
 
         axios.get(endPoint + new URLSearchParams(parameters))
-        .then(response => {
-            this.setState({
-                venues: response.data.response.groups[0].items
-            }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
-        })
-        .catch(error => {
-            window.alert("FourSquare API ERROR! " + error)
-        })
+            .then(response => {
+                this.setState({
+                    venues: response.data.response.groups[0].items
+                }, this.renderMap()) // Callback (wait) to renderMap until AFTER venues is updated.
+            })
+            .catch(error => {
+                window.alert("FourSquare API ERROR! " + error)
+            })
     }
+
 
     // Set the parameters for the renderMap() to use
     initMap = () => {
@@ -62,33 +59,46 @@ class TourGuide extends Component {
         const map = new window.google.maps.Map(document.getElementById('map'), {
             center: this.mapCenter,
             zoom: 14,
-            style: { style }
+            mapTypeId: 'terrain'
         });
 
         // Set initial map bounds
         let bounds = new window.google.maps.LatLngBounds();
 
         // Create InfoWindow
-        let infowindow = new window.google.maps.InfoWindow();            
+        let infowindow = new window.google.maps.InfoWindow();
+
+        // Track current marker (for clicking, bouncing)
+        // To_Do ...
 
         // Add Markers (bases on FourSquare response)
         this.state.venues.map(foursquareVenue => {
 
-            // Create Marker
+            // Create Marker. Initially drops down in place.
             let marker = new window.google.maps.Marker({
-                position: {lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng},
+                position: { lat: foursquareVenue.venue.location.lat, lng: foursquareVenue.venue.location.lng },
                 map: map,
-                title: foursquareVenue.venue.name
-              });
-            
-            // Marker clicked
-            marker.addListener('click', function() {
-                infowindow.setContent(foursquareVenue.venue.name)
-            
-                // Open InfoWindow
-                infowindow.open(map, marker);
+                title: foursquareVenue.venue.name,
+                animation: window.google.maps.Animation.DROP
             });
 
+            // Marker clicked
+            marker.addListener('click', function () {
+                infowindow.setContent(foursquareVenue.venue.name)
+
+                // Open InfoWindow
+                infowindow.open(map, marker);
+
+                // Start or stop bouncing marker
+                if (marker.getAnimation() !== null) {
+                    marker.setAnimation(null);
+                  } else {
+                    marker.setAnimation(window.google.maps.Animation.BOUNCE);
+                  }
+
+            });
+
+            this.state.markers.push(marker);
             bounds.extend(marker.position); // Add Marker to bounds (to be extended)
         })
         map.fitBounds(bounds); // Expand bounds to fit all Markers
@@ -96,12 +106,14 @@ class TourGuide extends Component {
 
     render() {
         return (
-            <div id="map" role="application" aria-label="map">
+            <div>
                 <Features
-                venues={this.venues}
-                mapCenter={this.mapCenter}
-                parameters={this.parameters}
-                />
+                    parameters={this.state.parameters}
+                    venues={this.state.venues}
+                    markers={this.state.markers}
+                    getVenues={this.venues} />
+                <div id="map" role="application" aria-label="map">
+                </div>
             </div>
         )
 
@@ -119,4 +131,4 @@ function scriptLoad(url) {
 }
 
 
-export default TourGuide;
+export default MyMap;

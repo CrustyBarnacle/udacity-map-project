@@ -6,25 +6,41 @@ class Features extends Component {
         query: ""
     }
 
-    componentDidMount() {
-        document.getElementById('search').addEventListener('click', function() {
-            this.setState({
-               near: document.getElementById('search').value
-            })
-          });
+
+    updateQuery(value) {
+        this.setState({
+            query: value
+        }, this.submitSearch);
+    }
+
+    venueNames(props) {
+        const listItems = this.props.venues.map((index) =>
+            <li
+            key={index.venue.id}>
+            {index.venue.name.toString()}
+            </li>
+        );
+
+        return (
+            <ul>
+                {listItems}
+            </ul>
+        );
     }
 
 
     render() {
+        const { venues } = this.props;
+
         return (
-            <div className="search-menu" id="search">
-                    <form id="search" role="search">
-                        <label for="search-input">Neighborhood Tour: </label>
-                        <input type="search" id="search-input" name="search" spellcheck="false" placeholder="Location or Address"
+            <div className="search-menu" id="search-container">
+                    <form id="search" role="search" onSubmit={this.handleSubmit}>
+                        <label htmlFor="search-input">Narrow search:  </label>
+                        <input autoFocus type="search" id="search-input" name="search" spellCheck="false" placeholder="Name or type of food..."
                         value={this.state.query}
                         onChange={(event) => this.updateQuery(event.target.value)}/>
-                        <input value="Search" type="submit" />
                     </form>
+                    {this.venueNames(venues)}
             </div>
         );
     }

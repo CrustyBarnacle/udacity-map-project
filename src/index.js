@@ -1,13 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Container from "./components/Container";
+import App from "./components/App";
 import registerServiceWorker from './registerServiceWorker';
 
 import "./styles.css";
 
 ReactDOM.render(
-    <Container />,
+    <App />,
     document.getElementById("root")
 );
 
