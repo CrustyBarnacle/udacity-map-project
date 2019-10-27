@@ -70,10 +70,3 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 * API-related
     - [Foursquare API](https://developer.foursquare.com/)
     - [MediaWikiAPI for Wikipedia](http://www.mediawiki.org/wiki/API:Main_page)
-// To-Do - Update README
-
-    Dependencies
-    References that you have used
-    Brief about important files in your project
-    how to run the project in development mode
-    how to run the project in production mode.
